@@ -138,23 +138,27 @@ contactForm?.addEventListener('submit', async e => {
   btn.textContent = 'Wird gesendet …';
   btn.disabled = true;
 
-  try {
-    // Save to Table API
-    await fetch('tables/inquiries', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name:    nameVal,
-        phone:   phoneVal,
+try {
+  const { error } = await window.supabase
+    .from('inquiries')
+    .insert([
+      {
+        name: nameVal,
+        phone: phoneVal,
         service: serviceVal || 'nicht angegeben',
         message: messageVal,
-        date:    new Date().toISOString()
-      })
-    });
-  } catch (err) {
-    // Silent fail — show success anyway (form data is still logged)
-    console.warn('Table API not available:', err);
-  }
+        date: new Date().toISOString()
+      }
+    ]);
+
+  if (error) throw error;
+} catch (err) {
+  console.error('Ошибка сохранения заявки:', err);
+  alert('Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut.');
+  btn.textContent = 'Anfrage senden';
+  btn.disabled = false;
+  return;
+}
 
   // Show success
   contactForm.style.display = 'none';
