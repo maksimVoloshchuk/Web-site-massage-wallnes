@@ -304,6 +304,7 @@ em { font-style: italic; color: var(--gold-dark); }
   justify-content: center;
   text-align: center;
   overflow: hidden;
+  padding-top: 90px;
 }
 
 .hero-bg {
@@ -351,10 +352,9 @@ em { font-style: italic; color: var(--gold-dark); }
 .hero-content {
   position: relative;
   z-index: 4;
-  padding: 120px 24px 80px;
+  padding: 80px 24px 60px;
   max-width: 780px;
 }
-
 .hero-eyebrow {
   font-family: 'Jost', sans-serif;
   font-weight: 200;
@@ -470,9 +470,9 @@ em { font-style: italic; color: var(--gold-dark); }
 
 .candle-icon {
   position: absolute;
-  top: 60px;
+  top: 35px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) scale(0.92);
 }
 
 .candle-body {
@@ -481,17 +481,17 @@ em { font-style: italic; color: var(--gold-dark); }
   background: linear-gradient(180deg, var(--cream) 0%, var(--stone-light) 100%);
   border-radius: 2px 2px 0 0;
   margin: 0 auto;
-  box-shadow: 0 4px 12px rgba(201,169,110,0.3);
+  box-shadow: 0 4px 12px rgba(201, 169, 110, 0.3);
 }
 
 .candle-flame {
-  width: 14px;
-  height: 28px;
+  width: 12px;
+  height: 24px;
   background: radial-gradient(ellipse at 50% 80%, #f9c74f 0%, #f77f00 55%, transparent 100%);
-  border-radius: 50% 50% 30% 30%;
-  margin: -4px auto 0;
+  border-radius: 50% 50% 35% 35%;
+  margin: -3px auto 0;
   animation: flicker 1.6s ease-in-out infinite alternate;
-  filter: blur(0.5px);
+  filter: blur(0.4px);
 }
 
 @keyframes flicker {
@@ -1371,7 +1371,9 @@ em { font-style: italic; color: var(--gold-dark); }
   .stat-num { font-size: 2rem; }
 
   .contact-form { padding: 32px 24px; }
-  .hero-content { padding: 110px 20px 70px; }
+  .hero-content {
+  padding: 85px 20px 55px;
+}
   .atmosphere-elements { gap: 32px; }
 
   .cta-actions { flex-direction: column; align-items: center; }
