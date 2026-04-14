@@ -139,6 +139,8 @@ contactForm?.addEventListener('submit', async e => {
   btn.disabled = true;
 
 try {
+  console.log('window.supabase =', window.supabase);
+
   const { error } = await window.supabase
     .from('inquiries')
     .insert([
@@ -152,9 +154,12 @@ try {
     ]);
 
   if (error) throw error;
+
 } catch (err) {
   console.error('Ошибка сохранения заявки:', err);
-  alert('Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut.');
+
+  alert('Ошибка: ' + (err?.message || JSON.stringify(err)));
+
   btn.textContent = 'Anfrage senden';
   btn.disabled = false;
   return;
